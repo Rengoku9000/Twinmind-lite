@@ -1,6 +1,6 @@
 # 🧠 TwinMind Lite
 
-![Live Demo](https://img.shields.io/badge/Live_Demo-twinmind--lite.vercel.app-blue?style=for-the-badge&logo=vercel)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-twinmind--lite.vercel.app-blue?style=for-the-badge&logo=vercel)](https://twinmind-lite.vercel.app)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
