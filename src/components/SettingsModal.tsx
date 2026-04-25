@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Settings as SettingsIcon, X, Eye, EyeOff } from "lucide-react";
 import { Settings, DEFAULT_SETTINGS } from "@/types";
 
@@ -13,6 +14,10 @@ type Tab = "key" | "advanced";
 
 export function SettingsModal({ settings, onSave }: SettingsModalProps) {
     const [open, setOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => setMounted(true), []);
+
     const [tab, setTab] = useState<Tab>("key");
     const [draft, setDraft] = useState<Settings>(settings);
     const [showKey, setShowKey] = useState(false);
@@ -37,8 +42,8 @@ export function SettingsModal({ settings, onSave }: SettingsModalProps) {
                 Settings
             </button>
 
-            {open && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-6">
+            {open && mounted && createPortal(
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-6">
                     <div
                         className="w-full max-w-lg bg-gray-900 rounded-2xl border border-gray-700 shadow-2xl"
                         style={{ display: "flex", flexDirection: "column", maxHeight: "80vh" }}
@@ -198,7 +203,8 @@ export function SettingsModal({ settings, onSave }: SettingsModalProps) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </>
     );
